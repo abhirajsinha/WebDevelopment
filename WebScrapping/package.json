@@ -1,13 +1,11 @@
 {
   "name": "webscrapping",
   "version": "1.0.0",
-  "description": "",
+  "description": "Web Scrapping",
   "main": "index.js",
   "scripts": {
-    "run": "node request.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
