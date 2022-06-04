@@ -4,4 +4,4 @@ let data = fs.readFileSync("f1.txt");
 
 console.log(" "+data);
 
-// Updated Nodec
+// Updated Node
