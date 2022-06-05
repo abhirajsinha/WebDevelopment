@@ -1,8 +1,11 @@
 const cheerio = require('cheerio');
-// const { html } = require('cheerio/lib/api/manipulation');
 const request = require("request");
+const fs=require('fs');
+const pdfkit = require("pdfkit");
+const path=require('path');
 
-function getIssueHtml(url,topicName){
+
+function getIssueHtml(url,topicName,repoName){
     request(url,cb);
 
     function cb(error,response,html){
@@ -31,7 +34,26 @@ function getIssueHtml(url,topicName){
             arr.push(issueLink);
         }
 
-        console.log(topicName,"    ",arr);
+        let folderPath = path.join(__dirname,topicName);
+        dirCreater(folderPath);
+        let filePath = path.join(folderPath,repoName+".pdf");
+        let text = JSON.stringify(arr);
+
+        let pdfDoc = new pdfkit();
+        pdfDoc.pipe(fs.createWriteStream(filePath));
+        pdfDoc.text(text);
+        pdfDoc.end();
+
+        fs.writeFileSync(filePath,text);
+        // console.log(topicName,"    ",arr);
+    }
+
+
+}
+
+function dirCreater(folderPath){
+    if(fs.existsSync(folderPath)==false){
+        fs.mkdirSync(folderPath);
     }
 }
 
