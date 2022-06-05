@@ -1,7 +1,7 @@
 const cheerio = require('cheerio');
 const request = require("request");
 
-function getReposPageHtml(url){
+function getReposPageHtml(url,topicName){
     request(url,cb);
     function cb(error,response,html){
         if(error){
@@ -16,6 +16,7 @@ function getReposPageHtml(url){
         let $ = cheerio.load(html);
         let repoLins = $(".text-bold.wb-break-word");
 
+        console.log(topicName);
         for(let i=0;i<repoLins.length;i++){
             let links = $(repoLins[i]).attr("href");
             let fullLink = `https://github.com/${links}`;

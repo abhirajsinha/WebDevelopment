@@ -24,8 +24,10 @@ function getTopicsLikns(html){
     //print topics links
     for(let i=0;i<topicLinks.length;i++){
         let links = $(topicLinks[i]).attr("href");
+        let topicName = links.split("/").pop();
+        // console.log(topicName);
         let fullLink = `https://github.com/${links}`;
         // console.log(fullLink);
-        getReposPageHtml(fullLink);
+        getReposPageHtml(fullLink,topicName);
     }
 }
