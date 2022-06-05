@@ -25,6 +25,7 @@ function getTopicsLikns(html){
 
     for(let i=0;i<topicLinks.length;i++){
         let links = $(topicLinks[i]).attr("href");
-        console.log(links);
+        let fullLink = `https://github.com/${links}`;
+        console.log(fullLink);
     }
 }
