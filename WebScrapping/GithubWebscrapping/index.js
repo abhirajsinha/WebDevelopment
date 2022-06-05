@@ -12,5 +12,19 @@ function cb(error,response,html){
         return;
     }
 
-    console.log(html);
+    getTopicsLikns(html);
+    // console.log(html);
+}
+
+function getTopicsLikns(html){
+    let $ = cheerio.load(html);
+
+    let topicLinks = $(".no-underline.d-flex.flex-column.flex-justify-center");
+
+    //print topics links
+
+    for(let i=0;i<topicLinks.length;i++){
+        let links = $(topicLinks[i]).attr("href");
+        console.log(links);
+    }
 }
